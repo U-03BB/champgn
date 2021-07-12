@@ -1,0 +1,89 @@
+html,body {
+  height: 100%;
+  background-color: #ecdede; 
+
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#header-subtitle {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  padding: 0;
+  margin: 0;
+  margin-top: -12px;
+  font-size: small;
+}
+
+#app-header {
+  font-family: "jubilat",serif;
+  font-weight: 700;
+  font-size: 51px;
+  font-kerning: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#main-window {
+  background-color: #ecdede;
+}
+
+#sidebar-lower-button-div {
+  margin-right: 10px;
+}
+
+#game-checkbox-div {
+  text-align: left;
+}
+
+hr {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid;
+}
+
+.cg-board-wrap {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: block;
+    margin: auto;
+  }
+
+.chessboard-container {
+    position: relative;
+}
+
+
+.promotion-icon {
+  font-size: 51px;
+  color: #303030;
+}
+
+.custom-file-label {
+  color:#7792a6;
+  display: flex;
+}
+
+.playing-side-note {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.modal-open[style] {
+  padding-right: 0px !important;
+}
+
+.import-file-help-text {
+  text-align: justify;
+}
