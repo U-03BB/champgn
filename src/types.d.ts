@@ -20,7 +20,7 @@ type PGN = {
   label?: string;
 };
 
-type PromotionPiece = "q" | "r" | "b" | "k";
+type PromotionPiece = "q" | "r" | "b" | "n";
 type SetupValues = "0" | "1";
 
 type Move = {

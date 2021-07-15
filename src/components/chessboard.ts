@@ -47,7 +47,7 @@ export default Vue.extend({
         return "b";
       }
       if (confirm("Promote to Knight?")) {
-        return "k";
+        return "n";
       }
       alert("Stop being cute! You're getting a Queen.");
       return "q";
