@@ -46,6 +46,10 @@ html,body {
   text-align: left;
 }
 
+#pgn-picker-radio {
+  text-align: left;
+}
+
 hr {
   padding: 0;
   margin: 0;

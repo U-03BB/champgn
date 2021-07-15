@@ -1,0 +1,27 @@
+[Event "Very Easy Puzzle"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1-0"]
+[WhiteELO "?"]
+[BlackELO "?"]
+[SetUp "1"]
+[FEN "7k/2Q5/Q7/5Q2/1Q6/4Q3/6Q1/K2Q4 w KQkq - 0 2"]
+
+*
+
+[Event "Promotion Test"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "0-1"]
+[WhiteELO "?"]
+[BlackELO "?"]
+[SetUp "1"]
+[FEN "8/8/8/4k3/6p1/4pPRB/5PPP/7K b KQkq - 0 2"]
+
+2... e2 0-1
