@@ -21,5 +21,4 @@ pnpm-debug.log*
 *.sw?
 
 # Hosted PGNs
-/src/pgnList.ts
 /public/pgn/*
