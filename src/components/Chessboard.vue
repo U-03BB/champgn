@@ -3,9 +3,9 @@
     <div class="col-sm-4 pt-2">
       <b-form-select
         v-model="selectedGame"
-        :options="options"
+        :options="gameListOptions"
         :select-size="puzzleSelectRows"
-        :disabled="optionsDisabled"
+        :disabled="gameListOptionsDisabled"
       />
     </div>
     <div class="col-sm-8 pt-2">

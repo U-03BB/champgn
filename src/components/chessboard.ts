@@ -160,13 +160,13 @@ export default Vue.extend({
         ? "black"
         : "white";
     },
-    options(): { value: PGN; text?: string }[] {
+    gameListOptions(): { value: PGN; text?: string }[] {
       return this.gameList.map((p, i) => {
         return { value: p, text: (i + 1).toString() + ". " + p.label };
       });
     },
-    optionsDisabled(): boolean {
-      return this.options.length === 0;
+    gameListOptionsDisabled(): boolean {
+      return this.gameListOptions.length === 0;
     }
   }
 });
