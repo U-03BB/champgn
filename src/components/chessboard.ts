@@ -130,8 +130,25 @@ export default Vue.extend({
         }
       });
 
+      if (pgnOutput.date) {
+        const [year, month, day] = pgnOutput.date.split(".");
+        if (year && year === "????") pgnOutput.date = "";
+        else if (month && month === "??") pgnOutput.date = year;
+        else if (day && day === "??") pgnOutput.date = `${year}.${month}`;
+      }
+
       pgnOutput.label =
-        pgnOutput.event + ": " + pgnOutput.white + " - " + pgnOutput.black;
+        (pgnOutput.event && pgnOutput.event !== "?" ? pgnOutput.event : "") +
+        (pgnOutput.event &&
+        pgnOutput.event !== "?" &&
+        pgnOutput.white &&
+        pgnOutput.white !== "?"
+          ? " : "
+          : "") +
+        (pgnOutput.white && pgnOutput.white !== "?" ? pgnOutput.white : "") +
+        (pgnOutput.black && pgnOutput.black !== "?"
+          ? " - " + pgnOutput.black
+          : "");
 
       return pgnOutput;
     },

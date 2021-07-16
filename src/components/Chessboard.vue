@@ -11,12 +11,28 @@
     <div class="col-sm-8 pt-2">
       {{
         this.selectedGame != null
-          ? this.selectedGame.event + " - " + this.selectedGame.date
+          ? (this.selectedGame.event && this.selectedGame.event !== "?"
+              ? this.selectedGame.event
+              : "") +
+            (this.selectedGame.event &&
+            this.selectedGame.event !== "?" &&
+            this.selectedGame.date &&
+            this.selectedGame.date !== ""
+              ? " - "
+              : "") +
+            (this.selectedGame.date && this.selectedGame.date !== ""
+              ? this.selectedGame.date
+              : "")
           : ""
       }}<br />
       {{
         this.selectedGame != null
-          ? this.selectedGame.white + " vs. " + this.selectedGame.black
+          ? (this.selectedGame.white !== "?" || this.selectedGame.black !== "?"
+              ? this.selectedGame.white
+              : "") +
+            (this.selectedGame.black !== "?"
+              ? " vs. " + this.selectedGame.black
+              : "")
           : ""
       }}<br />
       <chessboard
