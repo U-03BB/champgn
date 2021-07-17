@@ -1,6 +1,15 @@
 <template>
-  <div class="row">
-    <div class="col-sm-4 pt-2">
+  <div id="main-window" class="row">
+    <div id="gameSelectionList" class="col-sm-4 pt-2">
+      <div class="row justify-content-start">
+        <b-button class="m-2" v-b-toggle.pgn-menu variant="success">
+          Load PGN
+        </b-button>
+        <b-button class="m-2" @click="showAbout" variant="secondary">
+          About
+        </b-button>
+        <About id="about" />
+      </div>
       <b-form-select
         v-model="selectedGame"
         :options="gameListOptions"
@@ -8,33 +17,36 @@
         :disabled="gameListOptionsDisabled"
       />
     </div>
-    <div class="col-sm-8 pt-2">
-      {{
-        this.selectedGame != null
-          ? (this.selectedGame.event && this.selectedGame.event !== "?"
-              ? this.selectedGame.event
-              : "") +
-            (this.selectedGame.event &&
-            this.selectedGame.event !== "?" &&
-            this.selectedGame.date &&
-            this.selectedGame.date !== ""
-              ? " - "
-              : "") +
-            (this.selectedGame.date && this.selectedGame.date !== ""
-              ? this.selectedGame.date
-              : "")
-          : ""
-      }}<br />
-      {{
-        this.selectedGame != null
-          ? (this.selectedGame.white !== "?" || this.selectedGame.black !== "?"
-              ? this.selectedGame.white
-              : "") +
-            (this.selectedGame.black !== "?"
-              ? " vs. " + this.selectedGame.black
-              : "")
-          : ""
-      }}<br />
+    <div id="playArea" class="col-sm-8 pt-2">
+      <div id="gameHeader">
+        {{
+          this.selectedGame != null
+            ? (this.selectedGame.event && this.selectedGame.event !== "?"
+                ? this.selectedGame.event
+                : "") +
+              (this.selectedGame.event &&
+              this.selectedGame.event !== "?" &&
+              this.selectedGame.date &&
+              this.selectedGame.date !== ""
+                ? " - "
+                : "") +
+              (this.selectedGame.date && this.selectedGame.date !== ""
+                ? this.selectedGame.date
+                : "")
+            : ""
+        }}<br />
+        {{
+          this.selectedGame != null
+            ? (this.selectedGame.white !== "?" ||
+              this.selectedGame.black !== "?"
+                ? this.selectedGame.white
+                : "") +
+              (this.selectedGame.black !== "?"
+                ? " vs. " + this.selectedGame.black
+                : "")
+            : ""
+        }}<br />
+      </div>
       <chessboard
         :fen="currentFen"
         :orientation="side"

@@ -4,6 +4,7 @@ import pgnParser from "pgn-parser";
 import "bootstrap-vue";
 import "vue-chessboard/dist/vue-chessboard.css";
 import "bootstrap-vue";
+import About from "./About.vue";
 
 const defaultStartingFen =
   "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
@@ -11,7 +12,8 @@ const defaultStartingFen =
 export default Vue.extend({
   name: "Chessboard",
   components: {
-    chessboard
+    chessboard,
+    About
   },
 
   props: {
@@ -86,6 +88,9 @@ export default Vue.extend({
       this.selectedGame = null;
       this.resetPosition();
       this.showMoves = false;
+    },
+    showAbout(): void {
+      this.$bvModal.show("about");
     },
     parseGame(pgnInput: PgnDict): PGN {
       const pgnOutput: PGN = {
