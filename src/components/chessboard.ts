@@ -29,6 +29,7 @@ export default Vue.extend({
       puzzleSelectRows: 20,
       currentFen: defaultStartingFen,
       showMoves: false,
+      showThreats: false,
       isBoardFlipped: false,
       gameOver: false
     };
@@ -165,9 +166,18 @@ export default Vue.extend({
       this.isBoardFlipped = false;
       this.resetPosition();
       this.showMoves = false;
+      this.showThreats = false;
     },
     pgnString: function() {
       this.updateGameList();
+    },
+    showThreats: function() {
+      // Force chessboard position reload
+      const fen = this.currentFen;
+      this.currentFen = "";
+      setTimeout(() => {
+        this.currentFen = fen;
+      }, 0);
     }
   },
   computed: {

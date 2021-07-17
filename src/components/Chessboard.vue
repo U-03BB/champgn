@@ -40,6 +40,7 @@
         :orientation="side"
         :onPromotion="promote"
         @onMove="processMoveData"
+        :showThreats="showThreats"
       />
       <div class="playing-side-note">Playing as {{ side }}</div>
       <p />
@@ -58,6 +59,11 @@
           <div class="row d-flex flex-row">
             <b-form-checkbox id="showMovesCheckbox" v-model="showMoves">
               Show Moves
+            </b-form-checkbox>
+          </div>
+          <div class="row d-flex flex-row">
+            <b-form-checkbox id="showThreatsCheckbox" v-model="showThreats">
+              Show Threats
             </b-form-checkbox>
           </div>
         </div>
