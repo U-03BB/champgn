@@ -56,21 +56,21 @@
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
-            <b-form-checkbox id="hideCommentsCheckbox" v-model="hideComments">
-              Hide Moves
+            <b-form-checkbox id="showMovesCheckbox" v-model="showMoves">
+              Show Moves
             </b-form-checkbox>
           </div>
         </div>
       </div>
       <div class="pt-3">
-        <div v-show="!hideComments">
+        <div v-show="showMoves">
           {{
             this.selectedGame && this.selectedGame.comments
               ? this.selectedGame.comments[0]["text"]
               : ""
           }}
         </div>
-        <div v-show="!hideComments">
+        <div v-show="showMoves">
           {{ this.selectedGame != null ? this.selectedGame.moves : "" }}
         </div>
       </div>

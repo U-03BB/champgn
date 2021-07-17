@@ -28,7 +28,7 @@ export default Vue.extend({
       promotionPiece: "q" as PromotionPiece,
       puzzleSelectRows: 20,
       currentFen: defaultStartingFen,
-      hideComments: false,
+      showMoves: false,
       isBoardFlipped: false,
       gameOver: false
     };
@@ -84,6 +84,7 @@ export default Vue.extend({
       }
       this.selectedGame = null;
       this.resetPosition();
+      this.showMoves = false;
     },
     parseGame(pgnInput: PgnDict): PGN {
       const pgnOutput: PGN = {
@@ -163,6 +164,7 @@ export default Vue.extend({
     selectedGame: function() {
       this.isBoardFlipped = false;
       this.resetPosition();
+      this.showMoves = false;
     },
     pgnString: function() {
       this.updateGameList();
