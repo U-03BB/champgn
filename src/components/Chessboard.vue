@@ -13,7 +13,7 @@
       <b-form-select
         v-model="selectedGame"
         :options="gameListOptions"
-        :select-size="puzzleSelectRows"
+        :select-size="puzzleListRowCount"
         :disabled="gameListOptionsDisabled"
       />
     </div>

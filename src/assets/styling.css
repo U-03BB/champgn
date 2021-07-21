@@ -91,3 +91,16 @@ hr {
 .import-file-help-text {
   text-align: justify;
 }
+
+#gameSelectionList {
+  min-width: 200px;
+}
+
+@media(max-width: 600px ), (max-height: 600px) {
+
+  .cg-board-wrap {
+      width: min(90vh, 90vw);
+      height: min(90vh, 90vw);
+      margin-top: 5px !important;
+  }
+}

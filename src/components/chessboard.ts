@@ -9,6 +9,8 @@ import About from "./About.vue";
 const defaultStartingFen =
   "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
+const puzzleListMaxRows = 20;
+
 export default Vue.extend({
   name: "Chessboard",
   components: {
@@ -28,7 +30,6 @@ export default Vue.extend({
       gameList: [] as PGN[],
       selectedGame: null as PGN | null,
       promotionPiece: "q" as PromotionPiece,
-      puzzleSelectRows: 20,
       currentFen: defaultStartingFen,
       showMoves: false,
       showThreats: false,
@@ -201,6 +202,9 @@ export default Vue.extend({
     },
     gameListOptionsDisabled(): boolean {
       return this.gameListOptions.length === 0;
+    },
+    puzzleListRowCount(): number {
+      return window.innerWidth >= 600 ? puzzleListMaxRows : 1;
     }
   }
 });
