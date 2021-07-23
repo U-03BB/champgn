@@ -207,6 +207,14 @@ export default Vue.extend({
     },
     puzzleListRowCount(): number {
       return window.innerWidth >= 600 ? puzzleListMaxRows : 1;
+    },
+    noAnnotationsAvailable(): boolean {
+      return (
+        typeof this.selectedGame !== "undefined" &&
+        this.selectedGame !== null &&
+        this.selectedGame.moves.length == 0 &&
+        !this.selectedGame.comments
+      );
     }
   }
 });

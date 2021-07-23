@@ -64,20 +64,20 @@
         </div>
         <div id="game-checkbox-div" class="col d-flex flex-column">
           <div class="row d-flex flex-row">
-            <b-form-checkbox id="flipBoardCheckbox" v-model="isBoardFlipped">
-              Flip Board
+            <b-form-checkbox id="showThreatsCheckbox" v-model="showThreats">
+              Show Threats
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
-            <b-form-checkbox id="showThreatsCheckbox" v-model="showThreats">
-              Show Threats
+            <b-form-checkbox id="flipBoardCheckbox" v-model="isBoardFlipped">
+              Flip Board
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
             <b-form-checkbox
               id="showMovesCheckbox"
               v-model="showMoves"
-              :disabled="!this.selectedGame"
+              :disabled="!this.selectedGame || noAnnotationsAvailable"
             >
               Show Annotation
             </b-form-checkbox>
@@ -85,17 +85,13 @@
         </div>
       </div>
       <div id="annotation-section" class="pt-3">
+        <div id="no-annotations" v-show="noAnnotationsAvailable">
+          No annotation available
+        </div>
         <div id="game-comments" v-show="showMoves">
           {{
             this.selectedGame && this.selectedGame.comments
               ? this.selectedGame.comments
-              : ""
-          }}
-          {{
-            this.selectedGame &&
-            this.selectedGame.moves.length == 0 &&
-            !this.selectedGame.comments
-              ? "No annotation available"
               : ""
           }}
         </div>
