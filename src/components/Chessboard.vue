@@ -80,15 +80,13 @@
           </div>
         </div>
       </div>
-      <div class="pt-3 annotation-comment">
-        <div v-show="showMoves">
+      <div id="annotation-section" class="pt-3">
+        <div id="game-comments" v-show="showMoves">
           {{
             this.selectedGame && this.selectedGame.comments
               ? this.selectedGame.comments
               : ""
           }}
-        </div>
-        <div v-show="showMoves" class="annotation">
           {{
             this.selectedGame &&
             this.selectedGame.moves.length == 0 &&
@@ -96,6 +94,13 @@
               ? "No annotation available"
               : ""
           }}
+        </div>
+        <div
+          id="move-list"
+          v-show="
+            showMoves && this.selectedGame && this.selectedGame.moves.length > 0
+          "
+        >
           <move-annotation
             v-if="this.selectedGame && this.selectedGame !== null"
             :moves="this.selectedGame.moves"
