@@ -92,6 +92,10 @@ hr {
   text-align: justify;
 }
 
+.annotation {
+    white-space: break-spaces;
+}
+
 #gameSelectionList {
   min-width: 200px;
 }

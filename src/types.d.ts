@@ -15,19 +15,26 @@ type PGN = {
   annotator?: string;
   setup: SetupValues;
   fen: string;
-  comments?: GameComment[];
-  moves: string;
+  comments?: string;
+  moves: Move[];
   label?: string;
 };
 
 type PromotionPiece = "q" | "r" | "b" | "n";
 type SetupValues = "0" | "1";
 
+type MovePair = {
+  moveNumber: number;
+  white?: Move;
+  black?: Move;
+};
+
 type Move = {
   move: string;
   move_number?: string;
   comments?: GameComment[];
-  ravs?: Move[];
+  ravs?: Move[][];
+  nag?: string[];
 };
 
 type MoveData = {

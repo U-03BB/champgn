@@ -5,6 +5,7 @@ import "bootstrap-vue";
 import "vue-chessboard/dist/vue-chessboard.css";
 import "bootstrap-vue";
 import About from "./About.vue";
+import MoveAnnotation from "./MoveAnnotation.vue";
 
 const defaultStartingFen =
   "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
@@ -15,7 +16,8 @@ export default Vue.extend({
   name: "Chessboard",
   components: {
     chessboard,
-    About
+    About,
+    MoveAnnotation
   },
 
   props: {
@@ -97,7 +99,7 @@ export default Vue.extend({
       const pgnOutput: PGN = {
         setup: "0",
         fen: defaultStartingFen,
-        moves: ""
+        moves: []
       };
 
       const pgnKeys: Array<keyof PGN> = [
@@ -116,14 +118,8 @@ export default Vue.extend({
         "label"
       ];
 
-      if (pgnInput.moves != null) {
-        pgnInput.moves.forEach(m => {
-          pgnOutput.moves += this.parseMove(m);
-        });
-      }
-
+      // Turn header tuples into dictionary
       const pgnInputHeaderDict: { [key: string]: string } = {};
-
       pgnInput.headers.forEach(h => {
         pgnInputHeaderDict[h.name.toLowerCase()] = h.value;
       });
@@ -137,6 +133,18 @@ export default Vue.extend({
           setProp(k, pgnInputHeaderDict[k]);
         }
       });
+
+      pgnOutput.moves = pgnInput.moves;
+
+      // Reduce Game comments to a single string
+      // Comments for moves are handled individually.
+      pgnOutput.comments = pgnInput.comments
+        ?.map(c => {
+          return c.text;
+        })
+        .reduce((a, b) => {
+          return a + " " + b;
+        });
 
       if (pgnOutput.date) {
         const [year, month, day] = pgnOutput.date.split(".");
@@ -159,12 +167,6 @@ export default Vue.extend({
           : "");
 
       return pgnOutput;
-    },
-    parseMove(moveInput: Move): string {
-      if (moveInput.move_number) {
-        return " " + moveInput.move_number + " " + moveInput.move;
-      }
-      return " " + moveInput.move;
     }
   },
   watch: {

@@ -70,7 +70,7 @@
           </div>
           <div class="row d-flex flex-row">
             <b-form-checkbox id="showMovesCheckbox" v-model="showMoves">
-              Show Moves
+              Show Annotation
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
@@ -80,16 +80,32 @@
           </div>
         </div>
       </div>
-      <div class="pt-3">
+      <div class="pt-3 annotation-comment">
         <div v-show="showMoves">
           {{
             this.selectedGame && this.selectedGame.comments
-              ? this.selectedGame.comments[0]["text"]
+              ? this.selectedGame.comments
               : ""
           }}
         </div>
-        <div v-show="showMoves">
-          {{ this.selectedGame != null ? this.selectedGame.moves : "" }}
+        <div v-show="showMoves" class="annotation">
+          {{
+            this.selectedGame &&
+            this.selectedGame.moves.length == 0 &&
+            !this.selectedGame.comments
+              ? "No annotation available"
+              : ""
+          }}
+          <move-annotation
+            v-if="this.selectedGame && this.selectedGame !== null"
+            :moves="this.selectedGame.moves"
+            :blackStarts="this.selectedGame.fen.includes(' b ')"
+          />
+          {{
+            this.selectedGame && !["*", "?"].includes(this.selectedGame.result)
+              ? "Result: " + this.selectedGame.result
+              : ""
+          }}
         </div>
       </div>
     </div>
