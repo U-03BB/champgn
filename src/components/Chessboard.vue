@@ -69,13 +69,17 @@
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
-            <b-form-checkbox id="showMovesCheckbox" v-model="showMoves">
-              Show Annotation
+            <b-form-checkbox id="showThreatsCheckbox" v-model="showThreats">
+              Show Threats
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
-            <b-form-checkbox id="showThreatsCheckbox" v-model="showThreats">
-              Show Threats
+            <b-form-checkbox
+              id="showMovesCheckbox"
+              v-model="showMoves"
+              :disabled="!this.selectedGame"
+            >
+              Show Annotation
             </b-form-checkbox>
           </div>
         </div>
