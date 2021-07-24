@@ -5,7 +5,11 @@
         <b-button class="m-2" v-b-toggle.pgn-menu variant="success">
           Load PGN
         </b-button>
-        <b-button class="m-2" @click="showAbout" variant="secondary">
+        <b-button
+          class="m-2"
+          @click="$bvModal.show('about')"
+          variant="secondary"
+        >
           About
         </b-button>
         <About id="about" />
@@ -14,7 +18,7 @@
         v-model="selectedGame"
         :options="gameListOptions"
         :select-size="puzzleListRowCount"
-        :disabled="gameListOptionsDisabled"
+        :disabled="this.gameListOptions.length === 0"
       />
     </div>
     <div id="playArea" class="col-sm-8 pt-2">

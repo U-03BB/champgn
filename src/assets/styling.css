@@ -1,7 +1,6 @@
 html,body {
   height: 100%;
   background-color: #ecdede; 
-
 }
 
 #app {
@@ -12,6 +11,18 @@ html,body {
   color: #2c3e50;
 }
 
+#header-title {
+    font-family: "jubilat",serif;
+    font-weight: 700;
+    font-size: 51px;
+    font-kerning: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
 #header-subtitle {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 100;
@@ -20,22 +31,6 @@ html,body {
   margin: 0;
   margin-top: -12px;
   font-size: small;
-}
-
-#app-header {
-  font-family: "jubilat",serif;
-  font-weight: 700;
-  font-size: 51px;
-  font-kerning: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-#app-home {
-  background-color: #ecdede;
 }
 
 #sidebar-lower-button-div {

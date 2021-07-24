@@ -19,14 +19,12 @@ export default Vue.extend({
     About,
     MoveAnnotation
   },
-
   props: {
     pgnString: {
       type: String,
       required: true
     }
   },
-
   data() {
     return {
       gameList: [] as PGN[],
@@ -39,10 +37,9 @@ export default Vue.extend({
       gameOver: false
     };
   },
-
   methods: {
     promote(): PromotionPiece {
-      // Chess component requires a return value, which makes an async modal infeasible
+      // vue-chessboard requires the promotion callback to be synchronous
       if (confirm("Promote to Queen?")) {
         return "q";
       }
@@ -91,9 +88,6 @@ export default Vue.extend({
       this.selectedGame = null;
       this.resetPosition();
       this.showMoves = false;
-    },
-    showAbout(): void {
-      this.$bvModal.show("about");
     },
     parseGame(pgnInput: PgnDict): PGN {
       const pgnOutput: PGN = {
@@ -189,7 +183,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    side(): string {
+    side(): "white" | "black" {
       if (!this.selectedGame || this.selectedGame === null) {
         return !this.isBoardFlipped ? "white" : "black";
       }
@@ -201,9 +195,6 @@ export default Vue.extend({
       return this.gameList.map((p, i) => {
         return { value: p, text: (i + 1).toString() + ". " + p.label };
       });
-    },
-    gameListOptionsDisabled(): boolean {
-      return this.gameListOptions.length === 0;
     },
     puzzleListRowCount(): number {
       return window.innerWidth >= 600 ? puzzleListMaxRows : 1;

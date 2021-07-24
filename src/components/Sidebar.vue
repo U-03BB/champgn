@@ -112,9 +112,6 @@ export default Vue.extend({
     formatFilename(files: File[]): string {
       return files[0].name.slice(0, 22);
     },
-    showAbout(): void {
-      this.$bvModal.show("about");
-    },
     changeSidebarImage(): void {
       this.sidebarImg =
         this.sidebarImg.split("?")[0] + "?chess&" + new Date().getTime();
