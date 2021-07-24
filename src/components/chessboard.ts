@@ -31,6 +31,8 @@ export default Vue.extend({
       selectedGame: null as PGN | null,
       promotionPiece: "q" as PromotionPiece,
       currentFen: defaultStartingFen,
+      puzzleListRowCount: 20,
+      windowWidth: window.innerWidth,
       showMoves: false,
       showThreats: false,
       isBoardFlipped: false,
@@ -54,6 +56,9 @@ export default Vue.extend({
       }
       alert("Stop being cute! You're getting a Queen.");
       return "q";
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth;
     },
     resetPosition(): void {
       this.currentFen = "";
@@ -183,6 +188,13 @@ export default Vue.extend({
       setTimeout(() => {
         this.currentFen = fen;
       }, 0);
+    },
+    windowWidth: function(newWidth) {
+      if (newWidth >= 600) {
+        this.puzzleListRowCount = puzzleListMaxRows;
+        return;
+      }
+      this.puzzleListRowCount = 1;
     }
   },
   computed: {
@@ -199,9 +211,6 @@ export default Vue.extend({
         return { value: p, text: (i + 1).toString() + ". " + p.label };
       });
     },
-    puzzleListRowCount(): number {
-      return window.innerWidth >= 600 ? puzzleListMaxRows : 1;
-    },
     noAnnotationsAvailable(): boolean {
       return (
         typeof this.selectedGame !== "undefined" &&
@@ -210,5 +219,13 @@ export default Vue.extend({
         !this.selectedGame.comments
       );
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   }
 });
