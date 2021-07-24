@@ -190,6 +190,7 @@ export default Vue.extend({
       }, 0);
     },
     windowWidth: function(newWidth) {
+      document.body.dispatchEvent(new Event("chessground.resize"));
       if (newWidth >= 600) {
         this.puzzleListRowCount = puzzleListMaxRows;
         return;
