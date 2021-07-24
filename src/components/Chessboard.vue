@@ -18,8 +18,17 @@
         v-model="selectedGame"
         :options="gameListOptions"
         :select-size="puzzleListRowCount"
-        :disabled="this.gameListOptions.length === 0"
-      />
+        :disabled="gameListOptions.length === 0"
+      >
+        <template #first>
+          <b-form-select-option
+            :hidden="gameListOptions.length === 0"
+            :value="null"
+            disabled
+            >-- Select a game --</b-form-select-option
+          >
+        </template>
+      </b-form-select>
     </div>
     <div id="playArea" class="col-sm-8 pt-2">
       <div id="gameHeader">

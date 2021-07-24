@@ -38,10 +38,16 @@
           :options="hostedPgnOptions"
           :select-size="5"
           :disabled="hostedPgnOptionsDisabled"
-        />
+        >
+          <template #first>
+            <b-form-select-option :value="null" disabled
+              >-- Select a collection --</b-form-select-option
+            >
+          </template>
+        </b-form-select>
         <b-button
           @click="loadHostedPGN"
-          :disabled="selectedHostedPgnFile === ''"
+          :disabled="selectedHostedPgnFile === null"
           >Load Collection</b-button
         >
         <p />
@@ -95,7 +101,7 @@ export default Vue.extend({
         .map(k => {
           return { value: pgnList[k], text: k };
         }),
-      selectedHostedPgnFile: ""
+      selectedHostedPgnFile: null
     };
   },
   methods: {
