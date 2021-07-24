@@ -1,34 +1,55 @@
 <template>
   <div id="main-window" class="row">
-    <div id="gameSelectionList" class="col-sm-4 pt-2">
-      <div class="row justify-content-start">
-        <b-button class="m-2" v-b-toggle.pgn-menu variant="success">
+    <div
+      id="gameSelectionList"
+      :class="
+        windowWidth < 600 && selectedGame != null
+          ? 'col-sm-4 pt-2 compact-selection-list'
+          : 'col-sm-4 pt-2'
+      "
+    >
+      <div
+        :class="
+          windowWidth < 600 && selectedGame != null ? 'd-flex flex-row' : 'row'
+        "
+      >
+        <b-button
+          class="m-2 order-2"
+          style="min-width: 6.5em"
+          v-b-toggle.pgn-menu
+          variant="success"
+        >
           Load PGN
         </b-button>
         <b-button
-          class="m-2"
+          class="m-2 order-3"
           @click="$bvModal.show('about')"
           variant="secondary"
         >
           About
         </b-button>
         <About id="about" />
+        <b-form-select
+          :class="
+            windowWidth < 600 && selectedGame != null
+              ? 'order-1 m-2'
+              : 'order-4 m-2'
+          "
+          v-model="selectedGame"
+          :options="gameListOptions"
+          :select-size="puzzleListRowCount"
+          :disabled="gameListOptions.length === 0"
+        >
+          <template #first>
+            <b-form-select-option
+              :hidden="gameListOptions.length === 0"
+              :value="null"
+              disabled
+              >-- Select a game --</b-form-select-option
+            >
+          </template>
+        </b-form-select>
       </div>
-      <b-form-select
-        v-model="selectedGame"
-        :options="gameListOptions"
-        :select-size="puzzleListRowCount"
-        :disabled="gameListOptions.length === 0"
-      >
-        <template #first>
-          <b-form-select-option
-            :hidden="gameListOptions.length === 0"
-            :value="null"
-            disabled
-            >-- Select a game --</b-form-select-option
-          >
-        </template>
-      </b-form-select>
     </div>
     <div id="playArea" class="col-sm-8 pt-2">
       <div id="gameHeader">

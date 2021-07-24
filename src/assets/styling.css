@@ -73,7 +73,6 @@ hr {
     position: relative;
 }
 
-
 .promotion-icon {
   font-size: 51px;
   color: #303030;
@@ -156,5 +155,13 @@ hr {
       width: min(90vh, 90vw, 400px);
       height: min(90vh, 90vw, 400px);
       margin-top: 5px !important;
+  }
+
+  .compact-selection-list {
+    padding: 0 !important;
+  }
+
+  .playing-side-note {
+    margin: -10px;
   }
 }
