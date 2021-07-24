@@ -39,7 +39,11 @@
           :select-size="5"
           :disabled="hostedPgnOptionsDisabled"
         />
-        <b-button @click="loadHostedPGN">Load Collection</b-button>
+        <b-button
+          @click="loadHostedPGN"
+          :disabled="selectedHostedPgnFile === ''"
+          >Load Collection</b-button
+        >
         <p />
         <b-img :src="sidebarImg" height="500" width="500" thumbnail></b-img>
       </div>
