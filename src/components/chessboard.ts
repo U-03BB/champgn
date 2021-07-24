@@ -31,7 +31,7 @@ export default Vue.extend({
       selectedGame: null as PGN | null,
       promotionPiece: "q" as PromotionPiece,
       currentFen: defaultStartingFen,
-      puzzleListRowCount: 20,
+      puzzleListRowCount: window.innerWidth > 600 ? puzzleListMaxRows : 1,
       windowWidth: window.innerWidth,
       showMoves: false,
       showThreats: false,
