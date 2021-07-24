@@ -1,6 +1,6 @@
 html,body {
   height: 100%;
-  background-color: #ecdede; 
+  background-color: #ecdede;
 }
 
 #app {
@@ -11,7 +11,15 @@ html,body {
   color: #2c3e50;
 }
 
+#header {
+    background-color: #dee2ec !important;
+    animation-delay: .2; 
+    animation-fill-mode: forwards;
+    animation-duration: .3s;
+}
+
 #header-title {
+    background-color: inherit;
     font-family: "jubilat",serif;
     font-weight: 700;
     font-size: 51px;
@@ -24,6 +32,7 @@ html,body {
   }
 
 #header-subtitle {
+  background-color: inherit;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 100;
   font-style: italic;
@@ -57,6 +66,7 @@ hr {
     position: relative;
     display: block;
     margin: auto;
+    border: 1px solid;
   }
 
 .chessboard-container {
@@ -105,13 +115,46 @@ hr {
 
 @media(max-width: 600px ), (max-height: 600px) {
 
+    .title-shrink {
+        animation-name: title-shrink;
+        animation-delay: inherit;
+        animation-fill-mode: inherit;
+        animation-duration: inherit;
+      }
+    
+    .subtitle-shrink {
+        animation-name: subtitle-shrink;
+        animation-delay: inherit;
+        animation-fill-mode: inherit;
+        animation-duration: inherit;
+    }
+
+    @keyframes title-shrink {
+        0% {
+          font-size: 51px;
+        }
+        100% {
+          font-size: 16px;
+        }
+      }
+    @keyframes subtitle-shrink {
+        0% {
+          font-size: 13px;
+          margin-top: -12px;
+        }
+        100% {
+          font-size: 0px;
+          margin-top: 0px;
+        }
+      }
+
   #move-list {
       max-width: min(90vh, 90vw);
   }
 
   .cg-board-wrap {
-      width: min(90vh, 90vw);
-      height: min(90vh, 90vw);
+      width: min(90vh, 90vw, 400px);
+      height: min(90vh, 90vw, 400px);
       margin-top: 5px !important;
   }
 }

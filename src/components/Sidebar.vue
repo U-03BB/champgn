@@ -120,12 +120,14 @@ export default Vue.extend({
       this.pgnFile = null;
       this.$emit("pgnUpdated", "");
       this.showPgnMenu = false;
+      this.$emit("gameSelected", "false");
     },
     async loadHostedPGN(): Promise<void> {
       const response = await fetch("/pgn/" + this.selectedHostedPgnFile);
       const blob: Blob = await response.blob();
       blob.text().then(text => this.$emit("pgnUpdated", text));
       this.showPgnMenu = false;
+      this.$emit("gameSelected", "false");
     }
   },
   computed: {

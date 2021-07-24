@@ -1,11 +1,18 @@
 <template>
   <div id="app">
-    <div id="header-title">{{ siteTitle }} <i class="fas fa-chess" /></div>
-    <div id="header-subtitle">
-      {{ siteSubtitle }}
+    <div id="header">
+      <div id="header-title" :class="shouldShrinkHeader ? 'title-shrink' : ''">
+        {{ siteTitle }} <i class="fas fa-chess" />
+      </div>
+      <div
+        id="header-subtitle"
+        :class="shouldShrinkHeader ? 'subtitle-shrink' : ''"
+      >
+        {{ siteSubtitle }}
+      </div>
     </div>
     <hr />
-    <router-view />
+    <router-view @gameSelected="shrinkHeader" />
   </div>
 </template>
 
@@ -15,8 +22,17 @@ export default Vue.extend({
   data() {
     return {
       siteTitle: "ChamPGN",
-      siteSubtitle: "Just Play Chess Puzzles"
+      siteSubtitle: "Just Play Chess Puzzles",
+      shouldShrinkHeader: false
     };
+  },
+  methods: {
+    shrinkHeader(shouldShrinkString: "true" | "false"): void {
+      const shouldShrink = shouldShrinkString === "true";
+      if (this.shouldShrinkHeader !== shouldShrink) {
+        this.shouldShrinkHeader = shouldShrink;
+      }
+    }
   }
 });
 </script>

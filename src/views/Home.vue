@@ -5,9 +5,10 @@
         id="sidebar"
         :pgnString="this.pgnString"
         @pgnUpdated="setNewPgn"
+        @gameSelected="shrinkHeader"
       />
       <div class="col-12">
-        <chessboard :pgnString="this.pgnString" />
+        <chessboard :pgnString="this.pgnString" @gameSelected="shrinkHeader" />
       </div>
     </div>
   </div>
@@ -36,6 +37,9 @@ export default Vue.extend({
     },
     formatFilename(files: File[]): string {
       return files[0].name.slice(0, 22);
+    },
+    shrinkHeader(shouldShrink: "true" | "false") {
+      this.$emit("gameSelected", shouldShrink);
     }
   },
   watch: {

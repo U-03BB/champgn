@@ -169,6 +169,9 @@ export default Vue.extend({
       this.resetPosition();
       this.showMoves = false;
       this.showThreats = false;
+      if (this.selectedGame && this.selectedGame !== null) {
+        this.$emit("gameSelected", "true");
+      }
     },
     pgnString: function() {
       this.updateGameList();
