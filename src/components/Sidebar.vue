@@ -45,12 +45,18 @@
             >
           </template>
         </b-form-select>
-        <b-button
-          @click="loadHostedPGN"
-          :disabled="selectedHostedPgnFile === null"
-          >Load Collection</b-button
-        >
-        <p />
+        <div id="sidebar-button-row" class="d-flex justify-content-between">
+          <b-button
+            class="m-2"
+            @click="loadHostedPGN"
+            :disabled="selectedHostedPgnFile === null"
+            >Load Collection</b-button
+          >
+          <p />
+          <b-button class="m-2" @click="clearPgn" variant="secondary">
+            Clear PGN
+          </b-button>
+        </div>
         <b-img :src="sidebarImg" height="500" width="500" thumbnail></b-img>
       </div>
       <div id="local-pgn-picker" v-show="pgnPickerRadio === 'customLocal'">
@@ -71,11 +77,6 @@
         <p />
         <b-img :src="sidebarImg" height="500" width="500" thumbnail></b-img>
       </div>
-    </div>
-    <div id="sidebar-lower-button-div" class="d-flex justify-content-end">
-      <b-button class="m-2" @click="clearPgn" variant="secondary">
-        Clear PGN
-      </b-button>
     </div>
   </b-sidebar>
 </template>
