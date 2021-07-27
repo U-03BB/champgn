@@ -51,7 +51,10 @@
         </b-form-select>
       </div>
     </div>
-    <div id="playArea" class="col-sm-8 pt-2">
+    <div
+      id="playArea"
+      :class="windowWidth < 600 ? 'col-sm-8' : 'col-sm-8 pt-2'"
+    >
       <div id="gameHeader" :class="windowWidth < 600 ? '' : 'my-2'">
         {{ gameHeaderText.firstline }}<br />
         {{ gameHeaderText.secondline }}<br />
@@ -65,7 +68,7 @@
       />
       <div class="playing-side-note">Playing as {{ side }}</div>
       <p />
-      <div class="row justify-content-center">
+      <div id="game-controls" class="row justify-content-center">
         <div class="col d-flex flex-row justify-content-end">
           <b-button variant="info" @click="resetPosition"
             >Reset Position</b-button
@@ -93,7 +96,7 @@
           </div>
         </div>
       </div>
-      <div id="annotation-section" class="pt-3">
+      <div id="annotation-section">
         <div id="no-annotations" v-show="noAnnotationsAvailable">
           No annotation available
         </div>
