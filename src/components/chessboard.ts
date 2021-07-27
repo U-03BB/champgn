@@ -219,6 +219,40 @@ export default Vue.extend({
         this.selectedGame.moves.length == 0 &&
         !this.selectedGame.comments
       );
+    },
+    gameHeaderText(): { firstline: string; secondline: string } {
+      if (
+        typeof this.selectedGame === "undefined" ||
+        this.selectedGame == null
+      ) {
+        return { firstline: "", secondline: "" };
+      }
+      const firstline =
+        this.selectedGame != null
+          ? (this.selectedGame.event && this.selectedGame.event !== "?"
+              ? this.selectedGame.event
+              : "") +
+            (this.selectedGame.event &&
+            this.selectedGame.event !== "?" &&
+            this.selectedGame.date &&
+            this.selectedGame.date !== ""
+              ? " - "
+              : "") +
+            (this.selectedGame.date && this.selectedGame.date !== ""
+              ? this.selectedGame.date
+              : "")
+          : "";
+      const secondline =
+        this.selectedGame != null
+          ? (this.selectedGame.white !== "?" || this.selectedGame.black !== "?"
+              ? this.selectedGame.white
+              : "") +
+            (this.selectedGame.black !== "?"
+              ? " vs. " + this.selectedGame.black
+              : "")
+          : "";
+
+      return { firstline: firstline, secondline: secondline };
     }
   },
   mounted() {
@@ -228,5 +262,6 @@ export default Vue.extend({
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.onResize);
-  }
+  },
+  template: `<div />`
 });
