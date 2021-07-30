@@ -13,7 +13,7 @@ const defaultStartingFen =
 const puzzleListMaxRows = 20;
 
 export default Vue.extend({
-  name: "Chessboard",
+  name: "PlayArea",
   components: {
     chessboard,
     About,

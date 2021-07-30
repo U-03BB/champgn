@@ -8,7 +8,7 @@
         @gameSelected="shrinkHeader"
       />
       <div class="col-12">
-        <chessboard :pgnString="this.pgnString" @gameSelected="shrinkHeader" />
+        <PlayArea :pgnString="this.pgnString" @gameSelected="shrinkHeader" />
       </div>
     </div>
   </div>
@@ -16,13 +16,13 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Chessboard from "@/components/Chessboard.vue";
+import PlayArea from "@/components/PlayArea.vue";
 import Sidebar from "@/components/Sidebar.vue";
 
 export default Vue.extend({
   name: "Home",
   components: {
-    Chessboard,
+    PlayArea,
     Sidebar
   },
   data() {

@@ -1,11 +1,11 @@
 import { shallowMount } from "@vue/test-utils";
-import Chessboard from "@/components/chessboard";
+import PlayArea from "@/components/playarea";
 import { mockPgnText } from "./test_objects";
 
 const TEST_PGN_GAME_COUNT = 4;
 
-describe("Chessboard.vue", () => {
-  const wrapper = shallowMount(Chessboard, {
+describe("PlayArea.vue", () => {
+  const wrapper = shallowMount(PlayArea, {
     propsData: { pgnString: mockPgnText }
   });
 

@@ -1,7 +1,7 @@
 <template>
   <div id="main-window" class="row">
     <div
-      id="gameSelectionList"
+      id="gameSelectionArea"
       :class="
         windowWidth < 600 && selectedGame != null
           ? 'col-sm-4 pt-2 compact-selection-list'
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div
-      id="playArea"
+      id="boardArea"
       :class="windowWidth < 600 ? 'col-sm-8' : 'col-sm-8 pt-2'"
     >
       <div id="gameHeader" :class="windowWidth < 600 ? '' : 'my-2'">
@@ -129,7 +129,7 @@
   </div>
 </template>
 
-<script src="./chessboard" lang="ts" />
+<script src="./playarea" lang="ts" />
 
 <style>
 @import "../assets/styling.css";
