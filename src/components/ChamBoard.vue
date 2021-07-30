@@ -104,6 +104,16 @@ export default {
     this.board.set({
       movable: { events: { after: this.userPlay() } }
     });
+    this.$nextTick(() => {
+      window.addEventListener("animationend", () => {
+        document.body.dispatchEvent(new Event("chessground.resize"));
+      });
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("animationend", () => {
+      document.body.dispatchEvent(new Event("chessground.resize"));
+    });
   }
 };
 </script>
