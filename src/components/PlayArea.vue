@@ -64,7 +64,15 @@
         :orientation="side"
         :showThreats="showThreats"
       />
-      <div class="playing-side-note my-3">Playing as {{ side }}</div>
+      <div
+        :class="
+          windowWidth < 600
+            ? 'playing-side-note my-1'
+            : 'playing-side-note mt-3 mb-2'
+        "
+      >
+        Playing as {{ side }}
+      </div>
       <div id="game-controls" class="row justify-content-center">
         <div class="col d-flex flex-row justify-content-end">
           <b-button variant="info" @click="resetPosition"

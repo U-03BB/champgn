@@ -157,7 +157,11 @@ hr {
     padding: 0 !important;
   }
 
+  #gameHeader {
+      line-height: 1em;
+  }
+
   .playing-side-note {
-    margin: -10px;
+    font-size: medium;
   }
 }
