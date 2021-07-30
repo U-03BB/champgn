@@ -67,7 +67,7 @@
       <div
         :class="
           windowWidth < 600
-            ? 'playing-side-note my-1'
+            ? 'playing-side-note mt-2 mb-0'
             : 'playing-side-note mt-3 mb-2'
         "
       >

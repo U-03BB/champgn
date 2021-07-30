@@ -164,4 +164,9 @@ hr {
   .playing-side-note {
     font-size: medium;
   }
+
+  #game-checkbox-div .custom-checkbox{
+    min-height: 1.25rem;
+    line-height: 1.25rem;
+  }
 }
