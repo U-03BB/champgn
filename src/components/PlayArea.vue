@@ -30,6 +30,7 @@
         </b-button>
         <About id="about" />
         <b-form-select
+          v-show="windowWidth >= 600 || gameListOptions.length > 1"
           :class="
             windowWidth < 600 && selectedGame != null
               ? 'order-1 m-2'
@@ -55,7 +56,11 @@
       id="boardArea"
       :class="windowWidth < 600 ? 'col-sm-8' : 'col-sm-8 pt-2'"
     >
-      <div id="gameHeader" :class="windowWidth < 600 ? '' : 'my-2'">
+      <div
+        v-show="windowWidth >= 600 || this.selectedGame"
+        id="gameHeader"
+        :class="windowWidth < 600 ? '' : 'my-2'"
+      >
         {{ gameHeaderText.firstline }}<br />
         {{ gameHeaderText.secondline }}<br />
       </div>
