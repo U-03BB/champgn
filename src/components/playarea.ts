@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { chessboard } from "vue-chessboard";
+import ChamBoard from "./ChamBoard.vue";
 import pgnParser from "pgn-parser";
 import "bootstrap-vue";
 import "vue-chessboard/dist/vue-chessboard.css";
@@ -15,7 +15,7 @@ const puzzleListMaxRows = 20;
 export default Vue.extend({
   name: "PlayArea",
   components: {
-    chessboard,
+    ChamBoard,
     About,
     MoveAnnotation
   },
@@ -35,28 +35,10 @@ export default Vue.extend({
       windowWidth: window.innerWidth,
       showMoves: false,
       showThreats: false,
-      isBoardFlipped: false,
-      gameOver: false
+      isBoardFlipped: false
     };
   },
   methods: {
-    promote(): PromotionPiece {
-      // vue-chessboard requires the promotion callback to be synchronous
-      if (confirm("Promote to Queen?")) {
-        return "q";
-      }
-      if (confirm("Promote to Rook?")) {
-        return "r";
-      }
-      if (confirm("Promote to Bishop?")) {
-        return "b";
-      }
-      if (confirm("Promote to Knight?")) {
-        return "n";
-      }
-      alert("Stop being cute! You're getting a Queen.");
-      return "q";
-    },
     onResize() {
       this.windowWidth = window.innerWidth;
     },
@@ -66,20 +48,7 @@ export default Vue.extend({
         this.selectedGame
           ? (this.currentFen = this.selectedGame.fen)
           : (this.currentFen = defaultStartingFen);
-        this.gameOver = false;
       }, 0);
-    },
-    processMoveData(moveData: MoveData): void {
-      this.currentFen = moveData.fen;
-      if (!moveData.turn && !this.gameOver && moveData.history.length > 0) {
-        const lastMove: string = moveData.history[moveData.history.length - 1];
-        if (lastMove[lastMove.length - 1] === "#") {
-          alert("Checkmate!");
-        } else {
-          alert("Stalemate!");
-        }
-        this.gameOver = true;
-      }
     },
     updateGameList(): void {
       try {
@@ -180,14 +149,6 @@ export default Vue.extend({
     },
     pgnString: function() {
       this.updateGameList();
-    },
-    showThreats: function() {
-      // Force chessboard position reload
-      const fen = this.currentFen;
-      this.currentFen = "";
-      setTimeout(() => {
-        this.currentFen = fen;
-      }, 0);
     },
     windowWidth: function(newWidth) {
       document.body.dispatchEvent(new Event("chessground.resize"));

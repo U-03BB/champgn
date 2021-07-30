@@ -59,15 +59,12 @@
         {{ gameHeaderText.firstline }}<br />
         {{ gameHeaderText.secondline }}<br />
       </div>
-      <chessboard
+      <ChamBoard
         :fen="currentFen"
         :orientation="side"
-        :onPromotion="promote"
-        @onMove="processMoveData"
         :showThreats="showThreats"
       />
-      <div class="playing-side-note">Playing as {{ side }}</div>
-      <p />
+      <div class="playing-side-note my-3">Playing as {{ side }}</div>
       <div id="game-controls" class="row justify-content-center">
         <div class="col d-flex flex-row justify-content-end">
           <b-button variant="info" @click="resetPosition"
