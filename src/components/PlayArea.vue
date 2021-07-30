@@ -64,11 +64,7 @@
         {{ gameHeaderText.firstline }}<br />
         {{ gameHeaderText.secondline }}<br />
       </div>
-      <ChamBoard
-        :fen="currentFen"
-        :orientation="side"
-        :showThreats="showThreats"
-      />
+      <ChamBoard :fen="currentFen" :side="side" :showThreats="showThreats" />
       <div
         :class="
           windowWidth < 600

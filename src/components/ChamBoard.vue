@@ -16,8 +16,14 @@ export default {
   },
   props: {
     showThreats: {
-      required: true,
-      type: Boolean
+      required: false,
+      type: Boolean,
+      default: false
+    },
+    side: {
+      required: false,
+      type: String,
+      default: "white"
     }
   },
   data() {
@@ -77,19 +83,19 @@ export default {
   watch: {
     fen() {
       this.board.set({
+        orientation: this.side,
         movable: { events: { after: this.userPlay() } }
+      });
+    },
+    side() {
+      this.board.set({
+        orientation: this.side
       });
     },
     showThreats() {
       if (!this.showThreats) {
         this.board.set({
-          fen: this.game.fen(),
-          turnColor: this.toColor(),
-          movable: {
-            color: this.toColor(),
-            dests: this.possibleMoves(),
-            events: { after: this.userPlay() }
-          }
+          fen: this.game.fen()
         });
       }
     }
