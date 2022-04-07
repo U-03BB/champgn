@@ -135,7 +135,7 @@
   </div>
 </template>
 
-<script src="./playarea" lang="ts" />
+<script src="./PlayArea" lang="ts" />
 
 <style>
 @import "../assets/styling.css";

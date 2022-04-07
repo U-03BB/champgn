@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import PlayArea from "@/components/playarea";
+import PlayArea from "@/components/PlayArea";
 import { mockPgnText } from "./test_objects";
 
 const TEST_PGN_GAME_COUNT = 4;

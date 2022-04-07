@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Nag } from "./nag";
+import { Nag } from "@/util/nag";
 
 export default Vue.extend({
   name: "Move",
