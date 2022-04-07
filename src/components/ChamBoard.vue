@@ -38,6 +38,7 @@ export default {
         this.lastOrig = orig;
         this.lastDest = dest;
 
+        this.calculatePromotions();
         if (this.isPromotion(orig, dest)) {
           this.$bvModal.show("promotion");
           return;
@@ -55,7 +56,6 @@ export default {
       this.board.set({
         fen: this.game.fen()
       });
-      this.calculatePromotions();
       this.board.set({
         fen: this.game.fen(),
         turnColor: this.toColor(),
