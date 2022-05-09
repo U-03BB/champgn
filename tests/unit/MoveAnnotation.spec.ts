@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { shallowMount } from "@vue/test-utils";
 import MoveAnnotation from "@/components/MoveAnnotation.vue";
+import "bootstrap-vue";
 import {
   mockMoveListWhiteStarts,
   mockMoveListBlackStarts,
@@ -16,39 +17,34 @@ describe("MoveAnnotation.vue", () => {
     const wrapper = shallowMount(MoveAnnotation, {
       propsData: { moves: mockMoveListWhiteStarts }
     });
-    expect((wrapper.vm as any).movepairs.length).toEqual(MOVE_PAIR_COUNT);
-    expect((wrapper.vm as any).movepairs[0].blackStarts).toBeFalsy();
-    expect((wrapper.vm as any).movepairs[0].white).toEqual(
-      mockMoveListWhiteStarts[0]
-    );
-    expect((wrapper.vm as any).movepairs[0].black).toEqual(
-      mockMoveListWhiteStarts[1]
-    );
+    const vm = wrapper.vm as any;
+    expect(vm.movePairs.length).toEqual(MOVE_PAIR_COUNT);
+    expect(vm.movePairs[0].blackStarts).toBeFalsy();
+    expect(vm.movePairs[0].white).toEqual(mockMoveListWhiteStarts[0]);
+    expect(vm.movePairs[0].black).toEqual(mockMoveListWhiteStarts[1]);
   });
 
   it("parses moves starting with black", () => {
     const wrapper = shallowMount(MoveAnnotation, {
       propsData: { moves: mockMoveListBlackStarts, blackStarts: true }
     });
-    expect((wrapper.vm as any).movepairs.length).toEqual(MOVE_PAIR_COUNT + 1);
-    expect((wrapper.vm as any).blackStarts).toBeTruthy();
-    expect((wrapper.vm as any).movepairs[0].white).toBeUndefined();
-    expect((wrapper.vm as any).movepairs[0].black).toEqual(
-      mockMoveListBlackStarts[0]
-    );
-    expect((wrapper.vm as any).movepairs[1].white).toEqual(
-      mockMoveListBlackStarts[1]
-    );
-    expect((wrapper.vm as any).movepairs[1].black).toBeUndefined();
+    const vm = wrapper.vm as any;
+    expect(vm.movePairs.length).toEqual(MOVE_PAIR_COUNT + 1);
+    expect(vm.blackStarts).toBeTruthy();
+    expect(vm.movePairs[0].white).toBeUndefined();
+    expect(vm.movePairs[0].black).toEqual(mockMoveListBlackStarts[0]);
+    expect(vm.movePairs[1].white).toEqual(mockMoveListBlackStarts[1]);
+    expect(vm.movePairs[1].black).toBeUndefined();
   });
 
   it("parses NAGs", () => {
     const wrapper = shallowMount(MoveAnnotation, {
       propsData: { moves: mockMoveListWhiteStarts }
     });
-    expect((wrapper.vm as any).Nag["$82"]).toEqual(
+    const vm = wrapper.vm as any;
+    expect(vm.Nag["$82"]).toEqual(
       "White has a moderately strong pawn structure"
     );
-    expect((wrapper.vm as any).parseNags(mockNags)).toEqual(mockNagsOutput);
+    expect(vm.parseNags(mockNags)).toEqual(mockNagsOutput);
   });
 });

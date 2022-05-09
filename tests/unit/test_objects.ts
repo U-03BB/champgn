@@ -62,14 +62,17 @@ Nxh5 8. Bg6# 1-0
 `;
 
 export const mockMoveListWhiteStarts: Array<Move> = [
-  { move: "Nf3", comments: [], move_number: "1", nag: ["$2"] },
-  { move: "d5", comments: [], move_number: "1", nag: ["$2"] }
+  { move: "Nf3", comments: [], move_number: "1", nags: ["$2"] },
+  { move: "d5", comments: [], move_number: "1", nags: ["$2"] }
 ];
 export const mockMoveListBlackStarts: Array<Move> = [
-  { move: "c3", comments: [], move_number: "1", nag: ["$2"] },
-  { move: "Nf3", comments: [], move_number: "2", nag: ["$2"] }
+  { move: "c3", comments: [], move_number: "1", nags: ["$2"] },
+  { move: "Nf3", comments: [], move_number: "2", nags: ["$2"] }
 ];
 
 export const mockNags = ["$1", "$11", "$111"];
-export const mockNagsOutput =
-  "(!) (equal chances, quiet position) (Black has played the opening well)";
+export const mockNagsOutput = [
+  "(!)",
+  "(equal chances, quiet position)",
+  "(Black has played the opening well)"
+];
