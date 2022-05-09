@@ -60,7 +60,7 @@
               }}
               <move-annotation
                 :moves="data.item.blackRavs[idx].moves"
-                :blackStarts="false"
+                :blackStarts="true"
                 :labelPrefix="data.item.blackLabel"
               />
             </b-tab>
