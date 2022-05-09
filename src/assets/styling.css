@@ -92,12 +92,17 @@ hr {
   text-align: justify;
 }
 
-#annotation-section {
+.annotation {
     white-space: break-spaces;
     max-width: 100%;
     width: max-content;
     text-align: left;
     margin: auto;
+    background-color: inherit;
+}
+
+.annotation-has-ravs {
+    background-color: lightblue;
 }
 
 #move-list {

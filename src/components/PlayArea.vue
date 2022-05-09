@@ -102,7 +102,7 @@
           </div>
         </div>
       </div>
-      <div id="annotation-section">
+      <div id="annotation-section" class="annotation">
         <div id="no-annotations" v-show="noAnnotationsAvailable">
           No annotation available
         </div>
@@ -113,7 +113,8 @@
               : ""
           }}
         </div>
-        <div
+        <b-card
+          class="annotation text-center"
           id="move-list"
           v-show="
             showMoves && this.selectedGame && this.selectedGame.moves.length > 0
@@ -129,7 +130,7 @@
               ? "Result: " + this.selectedGame.result
               : ""
           }}
-        </div>
+        </b-card>
       </div>
     </div>
   </div>

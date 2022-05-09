@@ -34,7 +34,7 @@ type Move = {
   move_number?: string;
   comments?: GameComment[];
   ravs?: Move[][];
-  nag?: string[];
+  nags?: string[];
 };
 
 type MoveData = {
@@ -47,6 +47,16 @@ type MoveData = {
   legal_black?: number;
   threat_black?: number;
   checks_black?: number;
+};
+
+type AnnotationTableRow = {
+  moveNumber: number;
+  whiteMove: string;
+  whiteRavs: Move[][];
+  whiteLabel: string;
+  blackMove: string;
+  blackRavs: Move[][];
+  blackLabel: string;
 };
 
 type GameComment = { text: string };
