@@ -6,7 +6,7 @@
       </template>
 
       <template #cell(whiteMove)="data">
-        <span :id="data.item.whiteLabel">
+        <span>
           <!-- TODO: Split up move + annotation text-->
           {{ data.value }}
         </span>
@@ -39,7 +39,7 @@
       </template>
 
       <template #cell(blackMove)="data">
-        <span :id="data.item.blackLabel">
+        <span>
           {{ data.value }}
         </span>
         <b-popover
@@ -108,7 +108,10 @@ export default Vue.extend({
           tdClass: (value: never, key: never, item: AnnotationTableRow) => {
             if (item.whiteRavs?.length > 0) return "annotation-has-ravs";
             return "";
-          }
+          },
+          tdAttr: (value: never, key: never, item: AnnotationTableRow) => ({
+            id: item.whiteLabel
+          })
         },
         {
           key: "blackMove",
@@ -117,7 +120,10 @@ export default Vue.extend({
           tdClass: (value: never, key: never, item: AnnotationTableRow) => {
             if (item.blackRavs?.length > 0) return "annotation-has-ravs";
             return "";
-          }
+          },
+          tdAttr: (value: never, key: never, item: AnnotationTableRow) => ({
+            id: item.blackLabel
+          })
         }
       ]
     };
