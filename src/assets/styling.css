@@ -175,3 +175,7 @@ hr {
     line-height: 1.25rem;
   }
 }
+
+[data-darkreader-mode="dynamic"] piece.black:not(.king) {
+    filter: invert(100%) brightness(250%);
+}
