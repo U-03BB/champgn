@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "@/views/Home.vue";
 
-window.document.title = "ChamPGN Chess PGN Explorer";
+window.document.title = "ChamPGN Chess Puzzles";
 
 Vue.use(VueRouter);
 

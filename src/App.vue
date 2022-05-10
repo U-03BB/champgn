@@ -22,7 +22,7 @@ export default Vue.extend({
   data() {
     return {
       siteTitle: "ChamPGN",
-      siteSubtitle: "Just Play Chess Puzzles",
+      siteSubtitle: "Chess Puzzle Collections",
       shouldShrinkHeader: false
     };
   },

@@ -13,14 +13,19 @@
         in the
         <a href="https://en.wikipedia.org/wiki/Portable_Game_Notation"
           >PGN file format</a
-        >. You can view stored positions and continue playing legal moves.
+        >.
       </p>
       <p>
-        No user data is collected.
+        You can view stored positions, continue playing legal moves and browse
+        annotations and variations where available.
       </p>
       <p>
-        Source can be found at: <br />
+        Source code is available at: <br />
         <a :href="githubLink">{{ githubLink }}</a>
+      </p>
+      <p>
+        Any user-submitted PGNs are not saved by the server and are processed
+        only in the browser.
       </p>
     </b-container>
   </b-modal>
