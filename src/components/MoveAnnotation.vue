@@ -30,7 +30,7 @@
                 <move-annotation
                   :moves="data.item.whiteRavs[idx].moves"
                   :blackStarts="false"
-                  :labelPrefix="data.item.whiteLabel"
+                  :labelPrefix="data.item.whiteLabel + '-' + idx"
                 />
               </b-tab>
             </b-tabs>
