@@ -60,6 +60,19 @@ export default Vue.extend({
       this.selectedGame = null;
       this.resetPosition();
       this.showMoves = false;
+    },
+    closeAllRavs(evt: MouseEvent): void {
+      const movelist = document.getElementById("move-list");
+      const board = document.getElementById("game-board");
+      const target = evt.target as HTMLElement;
+      if (
+        movelist != target &&
+        !movelist?.contains(target) &&
+        board != target &&
+        !board?.contains(target)
+      ) {
+        this.$root.$emit("bv::hide::popover");
+      }
     }
   },
   watch: {
@@ -144,10 +157,12 @@ export default Vue.extend({
   mounted() {
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
+      window.addEventListener("click", this.closeAllRavs);
     });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("click", this.closeAllRavs);
   },
   template: `<div />`
 });

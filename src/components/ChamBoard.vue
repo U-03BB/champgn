@@ -1,7 +1,7 @@
 <template>
   <div class="blue merida">
     <PromotionModal id="promotion" @promotion="setPromotionPiece" />
-    <div ref="board" class="cg-board-wrap"></div>
+    <div id="game-board" ref="board" class="cg-board-wrap"></div>
   </div>
 </template>
 <script>
