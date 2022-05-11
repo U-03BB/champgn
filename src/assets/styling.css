@@ -109,6 +109,10 @@ hr {
     max-width: 400px;
 }
 
+#move-list > .popover > .popover-body {
+    padding: 0;
+}
+
 #gameSelectionList {
   min-width: 200px;
 }

@@ -1,5 +1,5 @@
 <template>
-  <b-card id="moveset" class="annotation text-center">
+  <b-card class="annotation text-center" no-body>
     <b-table small striped hover :items="tableData" :fields="fields">
       <template #cell(moveNumber)="data">
         {{ data.value }}
@@ -7,12 +7,12 @@
 
       <template #cell(whiteMove)="data">
         <span>
-          <!-- TODO: Split up move + annotation text-->
           {{ data.value }}
         </span>
         <b-popover
           v-if="data.item.whiteRavs && data.item.whiteRavs.length > 0"
           :target="data.item.whiteLabel"
+          container="move-list"
           triggers="click"
         >
           <template>
@@ -45,6 +45,7 @@
         <b-popover
           v-if="data.item.blackRavs && data.item.blackRavs.length > 0"
           :target="data.item.blackLabel"
+          container="move-list"
           triggers="click"
         >
           <b-tabs card>

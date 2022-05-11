@@ -114,8 +114,9 @@
           }}
         </div>
         <b-card
-          class="annotation text-center"
           id="move-list"
+          class="annotation text-center"
+          no-body
           v-show="
             showMoves && this.selectedGame && this.selectedGame.moves.length > 0
           "
