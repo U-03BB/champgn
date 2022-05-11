@@ -20,7 +20,7 @@
               <b-tab
                 v-for="(rav, idx) in data.item.whiteRavs"
                 :key="'rav-tab-' + idx"
-                :title="String(idx + 1)"
+                :title="rav.moves[0].move"
               >
                 {{
                   data.item.whiteRavs[idx].comments.length > 0
@@ -52,7 +52,7 @@
             <b-tab
               v-for="(rav, idx) in data.item.blackRavs"
               :key="'rav-tab-' + idx"
-              :title="String(idx + 1)"
+              :title="rav.moves[0].move"
             >
               {{
                 data.item.blackRavs[idx].comments.length > 0
