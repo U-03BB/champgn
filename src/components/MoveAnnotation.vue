@@ -14,6 +14,7 @@
           :target="data.item.whiteLabel"
           container="move-list"
           triggers="click"
+          placement="left"
         >
           <template>
             <b-tabs card v-if="data.item.whiteRavs.length > 1">
@@ -62,6 +63,7 @@
           :target="data.item.blackLabel"
           container="move-list"
           triggers="click"
+          placement="right"
         >
           <b-tabs card v-if="data.item.blackRavs.length > 1">
             <b-tab

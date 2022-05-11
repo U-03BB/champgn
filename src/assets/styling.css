@@ -98,7 +98,6 @@ hr {
     width: max-content;
     text-align: left;
     margin: auto;
-    background-color: inherit;
 }
 
 .annotation-has-ravs {
@@ -109,7 +108,7 @@ hr {
     max-width: 400px;
 }
 
-#move-list > .popover > .popover-body {
+#move-list .popover-body {
     padding: 0;
 }
 
