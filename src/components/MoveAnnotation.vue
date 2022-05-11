@@ -16,7 +16,7 @@
           triggers="click"
         >
           <template>
-            <b-tabs card>
+            <b-tabs card v-if="data.item.whiteRavs.length > 1">
               <b-tab
                 v-for="(rav, idx) in data.item.whiteRavs"
                 :key="'rav-tab-' + idx"
@@ -34,6 +34,21 @@
                 />
               </b-tab>
             </b-tabs>
+            <div
+              class="annotation-popover-single"
+              v-if="data.item.whiteRavs.length == 1"
+            >
+              {{
+                data.item.whiteRavs[0].comments.length > 0
+                  ? data.item.whiteRavs.comments.join("\n")
+                  : ""
+              }}
+              <move-annotation
+                :moves="data.item.whiteRavs[0].moves"
+                :blackStarts="false"
+                :labelPrefix="data.item.whiteLabel + '-' + 0"
+              />
+            </div>
           </template>
         </b-popover>
       </template>
@@ -48,7 +63,7 @@
           container="move-list"
           triggers="click"
         >
-          <b-tabs card>
+          <b-tabs card v-if="data.item.blackRavs.length > 1">
             <b-tab
               v-for="(rav, idx) in data.item.blackRavs"
               :key="'rav-tab-' + idx"
@@ -66,6 +81,21 @@
               />
             </b-tab>
           </b-tabs>
+          <div
+            class="annotation-popover-single"
+            v-if="data.item.blackRavs.length == 1"
+          >
+            {{
+              data.item.blackRavs[0].comments.length > 0
+                ? data.item.blackRavs.comments.join("\n")
+                : ""
+            }}
+            <move-annotation
+              :moves="data.item.blackRavs[0].moves"
+              :blackStarts="true"
+              :labelPrefix="data.item.blackLabel + '-' + 0"
+            />
+          </div>
         </b-popover>
       </template>
     </b-table>

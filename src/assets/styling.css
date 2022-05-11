@@ -113,6 +113,10 @@ hr {
     padding: 0;
 }
 
+.annotation-popover-single {
+    padding: .5rem;
+}
+
 #gameSelectionList {
   min-width: 200px;
 }
