@@ -98,10 +98,12 @@ hr {
     width: max-content;
     text-align: left;
     margin: auto;
+    cursor: context-menu;
 }
 
 .annotation-has-ravs {
     background-color: lightblue;
+    cursor: pointer;
 }
 
 #move-list {
