@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { shallowMount } from "@vue/test-utils";
 import MoveAnnotation from "@/components/MoveAnnotation.vue";
-import "bootstrap-vue";
 import {
   mockMoveListWhiteStarts,
   mockMoveListBlackStarts,
