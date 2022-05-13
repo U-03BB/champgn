@@ -3,7 +3,6 @@ import ChamBoard from "./ChamBoard.vue";
 import pgnParser from "pgn-parser";
 import "bootstrap-vue";
 import "vue-chessboard/dist/vue-chessboard.css";
-import "bootstrap-vue";
 import About from "./About.vue";
 import MoveAnnotation from "./MoveAnnotation.vue";
 import { defaultStartingFen, parseGame } from "../util/gameParser";
@@ -64,15 +63,26 @@ export default Vue.extend({
     closeAllRavs(evt: MouseEvent): void {
       const movelist = document.getElementById("move-list");
       const board = document.getElementById("game-board");
-      const target = evt.target as HTMLElement;
+      const target = evt.target as HTMLElement | null;
       if (
-        movelist != target &&
+        movelist !== target &&
         !movelist?.contains(target) &&
-        board != target &&
+        board !== target &&
         !board?.contains(target)
       ) {
         this.$root.$emit("bv::hide::popover");
       }
+    },
+    scrollToAnnotations(scrollDown: boolean): void {
+      this.$nextTick(() => {
+        if (scrollDown) {
+          const el = document.getElementById("game-controls");
+          el?.scrollIntoView({ behavior: "smooth" });
+        } else {
+          const el = document.getElementById("header-title");
+          el?.scrollIntoView({ behavior: "smooth" });
+        }
+      });
     }
   },
   watch: {

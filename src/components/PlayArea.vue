@@ -95,6 +95,7 @@
             <b-form-checkbox
               id="showMovesCheckbox"
               v-model="showMoves"
+              @input="scrollToAnnotations"
               :disabled="!this.selectedGame || noAnnotationsAvailable"
             >
               Show Annotation
