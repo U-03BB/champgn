@@ -14,7 +14,7 @@
           :target="data.item.whiteLabel"
           container="move-list"
           triggers="click"
-          placement="left"
+          :placement="windowWidth >= 600 ? 'left' : 'bottom'"
         >
           <template>
             <b-tabs card v-if="data.item.whiteRavs.length > 1">
@@ -32,6 +32,7 @@
                   :moves="data.item.whiteRavs[idx].moves"
                   :blackStarts="false"
                   :labelPrefix="data.item.whiteLabel + '-' + idx"
+                  :windowWidth="windowWidth"
                 />
               </b-tab>
             </b-tabs>
@@ -48,6 +49,7 @@
                 :moves="data.item.whiteRavs[0].moves"
                 :blackStarts="false"
                 :labelPrefix="data.item.whiteLabel + '-' + 0"
+                :windowWidth="windowWidth"
               />
             </div>
           </template>
@@ -63,7 +65,7 @@
           :target="data.item.blackLabel"
           container="move-list"
           triggers="click"
-          placement="right"
+          :placement="windowWidth >= 600 ? 'right' : 'bottom'"
         >
           <b-tabs card v-if="data.item.blackRavs.length > 1">
             <b-tab
@@ -80,6 +82,7 @@
                 :moves="data.item.blackRavs[idx].moves"
                 :blackStarts="true"
                 :labelPrefix="data.item.blackLabel + '-' + idx"
+                :windowWidth="windowWidth"
               />
             </b-tab>
           </b-tabs>
@@ -96,6 +99,7 @@
               :moves="data.item.blackRavs[0].moves"
               :blackStarts="true"
               :labelPrefix="data.item.blackLabel + '-' + 0"
+              :windowWidth="windowWidth"
             />
           </div>
         </b-popover>
@@ -124,6 +128,11 @@ export default Vue.extend({
       type: String,
       required: false,
       default: "note"
+    },
+    windowWidth: {
+      type: Number,
+      required: false,
+      default: window.innerWidth
     }
   },
   data() {

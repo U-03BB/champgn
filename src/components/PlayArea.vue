@@ -126,6 +126,7 @@
             v-if="this.selectedGame && this.selectedGame !== null"
             :moves="this.selectedGame.moves"
             :blackStarts="this.selectedGame.fen.includes(' b ')"
+            :windowWidth="this.windowWidth"
           />
           {{
             this.selectedGame && !["*", "?"].includes(this.selectedGame.result)
