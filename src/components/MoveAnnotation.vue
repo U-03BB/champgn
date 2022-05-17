@@ -17,7 +17,7 @@
           :placement="windowWidth >= 600 ? 'left' : 'bottom'"
         >
           <template>
-            <b-tabs card v-if="data.item.whiteRavs.length > 1">
+            <b-tabs card justified v-if="data.item.whiteRavs.length > 1">
               <b-tab
                 v-for="(rav, idx) in data.item.whiteRavs"
                 :key="'rav-tab-' + idx"
@@ -35,6 +35,13 @@
                   :windowWidth="windowWidth"
                 />
               </b-tab>
+              <template #tabs-end>
+                <li
+                  v-for="i in (((data.item.whiteRavs.length % 3) - 3) * -1) % 3"
+                  :key="'spacer' + i"
+                  class="nav-item"
+                />
+              </template>
             </b-tabs>
             <div
               class="annotation-popover-single"
@@ -67,7 +74,7 @@
           triggers="click"
           :placement="windowWidth >= 600 ? 'right' : 'bottom'"
         >
-          <b-tabs card v-if="data.item.blackRavs.length > 1">
+          <b-tabs card justified v-if="data.item.blackRavs.length > 1">
             <b-tab
               v-for="(rav, idx) in data.item.blackRavs"
               :key="'rav-tab-' + idx"
@@ -85,6 +92,13 @@
                 :windowWidth="windowWidth"
               />
             </b-tab>
+            <template #tabs-end>
+              <li
+                v-for="i in (((data.item.blackRavs.length % 3) - 3) * -1) % 3"
+                :key="'spacer' + i"
+                class="nav-item"
+              />
+            </template>
           </b-tabs>
           <div
             class="annotation-popover-single"

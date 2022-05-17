@@ -94,6 +94,7 @@ hr {
 
 .annotation {
     white-space: break-spaces;
+    min-width: 190px;
     max-width: 100%;
     width: max-content;
     text-align: left;
