@@ -237,7 +237,7 @@ export default Vue.extend({
         whiteLabel: this.labelPrefix + "-" + String(m.moveNumber) + "W",
         blackMove: m.black
           ? m.black.move + "\n" + this.parseComments(m.black)
-          : "...",
+          : "",
         blackRavs: m.black?.ravs ? m.black.ravs : [],
         blackLabel: this.labelPrefix + "-" + String(m.moveNumber) + "B"
       }));
