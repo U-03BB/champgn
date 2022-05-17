@@ -61,12 +61,15 @@ export default Vue.extend({
       this.showMoves = false;
     },
     closeAllRavs(evt: MouseEvent): void {
+      // Criteria: Click anything other than game board or RAV popover
       const movelist = document.getElementById("move-list");
+      const movelistPopovers = Array.from(
+        movelist?.getElementsByClassName("popover") ?? []
+      );
       const board = document.getElementById("game-board");
       const target = evt.target as HTMLElement | null;
       if (
-        movelist !== target &&
-        !movelist?.contains(target) &&
+        movelistPopovers.every(c => c !== target && !c.contains(target)) &&
         board !== target &&
         !board?.contains(target)
       ) {
