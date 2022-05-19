@@ -74,26 +74,39 @@
       >
         Playing as {{ side }}
       </div>
-      <div id="game-controls" class="row justify-content-center">
+      <div id="game-controls-area" class="row justify-content-center">
         <div class="col d-flex flex-row justify-content-end">
-          <b-button variant="info" @click="resetPosition"
+          <b-button
+            id="resetPositionButton"
+            class="game-control"
+            variant="info"
+            @click="resetPosition"
             >Reset Position</b-button
           >
         </div>
         <div id="game-checkbox-div" class="col d-flex flex-column">
           <div class="row d-flex flex-row">
-            <b-form-checkbox id="showThreatsCheckbox" v-model="showThreats">
+            <b-form-checkbox
+              id="showThreatsCheckbox"
+              class="game-control"
+              v-model="showThreats"
+            >
               Show Threats
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
-            <b-form-checkbox id="flipBoardCheckbox" v-model="isBoardFlipped">
+            <b-form-checkbox
+              id="flipBoardCheckbox"
+              class="game-control"
+              v-model="isBoardFlipped"
+            >
               Flip Board
             </b-form-checkbox>
           </div>
           <div class="row d-flex flex-row">
             <b-form-checkbox
               id="showMovesCheckbox"
+              class="game-control"
               v-model="showMoves"
               @input="scrollToAnnotations"
               :disabled="!this.selectedGame || noAnnotationsAvailable"

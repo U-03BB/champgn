@@ -60,25 +60,30 @@ export default Vue.extend({
       this.resetPosition();
       this.showMoves = false;
     },
-    closeAllRavs(evt: MouseEvent): void {
-      /* Criteria: Click anything other than:
+    hideRavs(evt: MouseEvent): void {
+      const target = evt.target as HTMLElement | null;
+
+      /*
+      Close all RAVs if anything clicked other than:
       - RAV popover
       - game board
       - game controls
       */
+
       const movelist = document.getElementById("move-list");
       const movelistPopovers = Array.from(
         movelist?.getElementsByClassName("popover") ?? []
       );
       const board = document.getElementById("game-board");
-      const gameControls = document.getElementById("game-controls");
-      const target = evt.target as HTMLElement | null;
+      const gameControls = Array.from(
+        document.getElementsByClassName("game-control")
+      );
+
       if (
-        movelistPopovers.every(c => c !== target && !c.contains(target)) &&
+        movelistPopovers.every(el => el !== target && !el.contains(target)) &&
         board !== target &&
         !board?.contains(target) &&
-        gameControls !== target &&
-        !gameControls?.contains(target)
+        gameControls.every(el => el !== target && !el.contains(target))
       ) {
         this.$root.$emit("bv::hide::popover");
       }
@@ -177,12 +182,12 @@ export default Vue.extend({
   mounted() {
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
-      window.addEventListener("click", this.closeAllRavs);
+      window.addEventListener("click", this.hideRavs);
     });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.onResize);
-    window.removeEventListener("click", this.closeAllRavs);
+    window.removeEventListener("click", this.hideRavs);
   },
   template: `<div />`
 });
