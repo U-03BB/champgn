@@ -91,7 +91,7 @@ export default Vue.extend({
     scrollToAnnotations(scrollDown: boolean): void {
       this.$nextTick(() => {
         if (scrollDown) {
-          const el = document.getElementById("game-controls");
+          const el = document.getElementById("game-controls-area");
           el?.scrollIntoView({ behavior: "smooth" });
         } else {
           const el = document.getElementById("header-title");
