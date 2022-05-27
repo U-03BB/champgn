@@ -64,7 +64,12 @@
         {{ gameHeaderText.firstline }}<br />
         {{ gameHeaderText.secondline }}<br />
       </div>
-      <ChamBoard :fen="currentFen" :side="side" :showThreats="showThreats" />
+      <ChamBoard
+        :fen="currentFen"
+        :side="boardOrientation"
+        :showThreats="showThreats"
+        @playerTurnEnd="changeTurnColor"
+      />
       <div
         :class="
           windowWidth < 600
@@ -72,7 +77,7 @@
             : 'playing-side-note mt-3 mb-2'
         "
       >
-        Playing as {{ side }}
+        {{ this.playerTurn == "white" ? "White to Play" : "Black to Play" }}
       </div>
       <div id="game-controls-area" class="row justify-content-center">
         <div class="col d-flex flex-row justify-content-end">

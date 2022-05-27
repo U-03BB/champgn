@@ -32,7 +32,8 @@ export default Vue.extend({
       windowWidth: window.innerWidth,
       showMoves: false,
       showThreats: false,
-      isBoardFlipped: false
+      isBoardFlipped: false,
+      playerTurn: "white"
     };
   },
   methods: {
@@ -46,6 +47,9 @@ export default Vue.extend({
           ? (this.currentFen = this.selectedGame.fen)
           : (this.currentFen = defaultStartingFen);
       }, 0);
+      this.playerTurn = this.selectedGame?.fen.includes(" b ")
+        ? "black"
+        : "white";
     },
     updateGameList(): void {
       try {
@@ -98,6 +102,9 @@ export default Vue.extend({
           el?.scrollIntoView({ behavior: "smooth" });
         }
       });
+    },
+    changeTurnColor(color: "white" | "black"): void {
+      this.playerTurn = color;
     }
   },
   watch: {
@@ -123,7 +130,7 @@ export default Vue.extend({
     }
   },
   computed: {
-    side(): "white" | "black" {
+    boardOrientation(): "white" | "black" {
       if (!this.selectedGame || this.selectedGame === null) {
         return !this.isBoardFlipped ? "white" : "black";
       }

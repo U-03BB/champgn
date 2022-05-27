@@ -20,7 +20,7 @@ describe("PlayArea.vue", () => {
   it("handles null selectedGame", () => {
     wrapper.vm.selectedGame = null;
     expect(wrapper.vm.selectedGame).toBeNull();
-    expect(wrapper.vm.side).toEqual("white");
+    expect(wrapper.vm.boardOrientation).toEqual("white");
     expect(wrapper.vm.gameHeaderText.firstline).toEqual("");
     expect(wrapper.vm.gameHeaderText.secondline).toEqual("");
     expect(wrapper.vm.noAnnotationsAvailable).toBeFalsy();
@@ -57,10 +57,10 @@ describe("PlayArea.vue", () => {
     expect(wrapper.vm.noAnnotationsAvailable).toBeTruthy();
   });
 
-  it("identifies side to move", () => {
+  it("identifies board orientation", () => {
     wrapper.vm.selectedGame = wrapper.vm.gameList[1];
-    expect(wrapper.vm.side).toEqual("white");
+    expect(wrapper.vm.boardOrientation).toEqual("white");
     wrapper.vm.selectedGame = wrapper.vm.gameList[3];
-    expect(wrapper.vm.side).toEqual("black");
+    expect(wrapper.vm.boardOrientation).toEqual("black");
   });
 });

@@ -73,6 +73,8 @@ export default {
       } else if (this.game.in_stalemate()) {
         alert("Stalemate.");
       }
+
+      this.$emit("playerTurnEnd", this.board.state.turnColor);
     },
     setPromotionPiece(p) {
       this.promoteTo = p;
