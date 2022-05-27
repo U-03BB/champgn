@@ -1,6 +1,7 @@
 <template>
   <div class="blue merida">
     <PromotionModal id="promotion" @promotion="setPromotionPiece" />
+    <b-toaster name="board-toaster" class="gameplay-toaster" />
     <div id="game-board" ref="board" class="cg-board-wrap"></div>
   </div>
 </template>
@@ -69,9 +70,9 @@ export default {
         this.paintThreats();
       }
       if (this.game.in_checkmate()) {
-        alert("Checkmate!");
+        this.gameplayToast("Checkmate", "success");
       } else if (this.game.in_stalemate()) {
-        alert("Stalemate.");
+        this.gameplayToast("Stalemate", "danger");
       }
 
       this.$emit("playerTurnEnd", this.board.state.turnColor);
@@ -80,6 +81,17 @@ export default {
       this.promoteTo = p;
       this.$bvModal.hide("promotion");
       this.finishMove();
+    },
+    gameplayToast(text, variant = "default") {
+      this.$bvToast.toast(text, {
+        toaster: "board-toaster",
+        toastClass: "gameplay-toast",
+        variant: variant,
+        autoHideDelay: 1000,
+        noCloseButton: true,
+        solid: true,
+        append: true
+      });
     }
   },
   watch: {

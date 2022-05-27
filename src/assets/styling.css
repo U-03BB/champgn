@@ -123,6 +123,16 @@ hr {
   min-width: 200px;
 }
 
+.gameplay-toaster {
+  position: absolute;
+  left: 0rem;
+  right: 0rem;
+  top: 5rem;
+  margin: auto;
+  overflow: hidden;
+  width: fit-content;
+}
+
 @media(max-width: 600px ), (max-height: 600px) {
 
     .title-shrink {
