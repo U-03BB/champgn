@@ -73,9 +73,9 @@ export default {
         this.gameplayToast("Checkmate", "success");
       } else if (this.game.in_stalemate()) {
         this.gameplayToast("Stalemate", "danger");
+      } else {
+        this.$emit("playerTurnEnd", this.board.state.turnColor);
       }
-
-      this.$emit("playerTurnEnd", this.board.state.turnColor);
     },
     setPromotionPiece(p) {
       this.promoteTo = p;
