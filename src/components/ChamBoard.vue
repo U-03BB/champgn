@@ -69,11 +69,15 @@ export default {
       if (this.showThreats) {
         this.paintThreats();
       }
+
       if (this.game.in_checkmate()) {
         this.gameplayToast("Checkmate", "success");
       } else if (this.game.in_stalemate()) {
         this.gameplayToast("Stalemate", "danger");
       } else {
+        if (this.game.in_check()) {
+          this.gameplayToast("Check", "info", 1000);
+        }
         this.$emit("playerTurnEnd", this.board.state.turnColor);
       }
     },
@@ -82,12 +86,12 @@ export default {
       this.$bvModal.hide("promotion");
       this.finishMove();
     },
-    gameplayToast(text, variant = "default") {
+    gameplayToast(text, variant = "default", showDurationMs = 2000) {
       this.$bvToast.toast(text, {
         toaster: "board-toaster",
         toastClass: "gameplay-toast",
         variant: variant,
-        autoHideDelay: 1000,
+        autoHideDelay: showDurationMs,
         noCloseButton: true,
         solid: true,
         append: true
